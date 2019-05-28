@@ -1,4 +1,6 @@
 %% UWB lab 4 - indoor tracking with 4 PulsOn 410 units
+clear all;
+close all;
 
 % Positions of the 4 units in meters
 P101 = [-1.76,1.47];           
@@ -31,7 +33,7 @@ title('GEOMETRY');xlabel('X (m)');ylabel('Y (m)')
 % !!!!!!!!!! NOT ESSENTIAL !!!!!!!!!!!!!
 % Sphere placed at (0,0)%
 % Loading data for t0 cal
-cd('Q:\UWB LAB Tracking\P');
+%cd('Q:\UWB LAB Tracking\P');
 % Load data from unit 103
 [config,control,scans] = readMrmRetLog('101_Sphere00002.csv');
 Nscans103 = length(scans);
