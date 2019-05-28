@@ -135,27 +135,27 @@ rngOffset106 = rngSph106Real - rngSph106; % range offset for unit 106
 
 
 %% Loading Data for tracking
-cd('D:\EDUCATION\UWB - Q4\Tracking lab\Data');
+%cd('D:\EDUCATION\UWB - Q4\Tracking lab\Data');
 % Load data from unit 101
-[config,control,scans] = readMrmRetLog('101_AEI005.csv');
+[config,control,scans] = readMrmRetLog('B101009.csv');
 Nscans101 = length(scans);
 tstmp101 = [scans.T];
 data101 = [scans.scn];
 data101 = reshape(data101,[],Nscans101);
 % Load data from unit 102
-[config,control,scans] = readMrmRetLog('102_AEI007.csv');
+[config,control,scans] = readMrmRetLog('B102009.csv');
 Nscans102 = length(scans);
 tstmp102 = [scans.T];
 data102 = [scans.scn];
 data102 = reshape(data102,[],Nscans102);
 % Load data from unit 104
-[config,control,scans] = readMrmRetLog('104_AEI006.csv');
+[config,control,scans] = readMrmRetLog('B103009.csv');
 Nscans104 = length(scans);
 tstmp104 = [scans.T];
 data104 = [scans.scn];
 data104 = reshape(data104,[],Nscans104);
 % Load data from unit 106
-[config,control,scans] = readMrmRetLog('106_AEI008.csv');
+[config,control,scans] = readMrmRetLog('B104009.csv');
 Nscans106 = length(scans);
 tstmp106 = [scans.T];
 data106 = [scans.scn];
@@ -193,7 +193,8 @@ figure;imagesc(abs(data104_algnd));title('104')
 figure;imagesc(abs(data106_algnd));title('106')
 
 %% Background removal
-BGidx = 75:85;  % select the slow time indexes containing the background data
+close all;
+BGidx = 280:360;  % select the slow time indexes containing the background data
 BG101 = mean(data101_algnd(:,BGidx),2);   
 BG102 = mean(data102_algnd(:,BGidx),2);
 BG104 = mean(data104_algnd(:,BGidx),2);
@@ -209,7 +210,7 @@ figure;imagesc(abs(data102_algnd_bg));title('102')
 figure;imagesc(abs(data104_algnd_bg));title('104')
 figure;imagesc(abs(data106_algnd_bg));title('106')
 
-Motionidx = 20:75;  % select the slow time indexes containing the trajectory data
+Motionidx = 23:280;  % select the slow time indexes containing the trajectory data
 path101 = data101_algnd_bg(:,Motionidx); 
 path102 = data102_algnd_bg(:,Motionidx);
 path104 = data104_algnd_bg(:,Motionidx);
@@ -253,10 +254,11 @@ rng = 3e8*(t-t(1))/2e9; % m
 t_slow = 0:.5:.5*(Nscans-1);
 
 % 101
+
 estimated_range=[];
 for i1=1:Nscans % Long time
-    i2 = 80; % Avoiding picking antenna coupling
-    while abs(path101(i2,i1)) < 0.06 && i2 < Nrng-1    % threshold 0.06
+    i2 = 10; % Avoiding picking antenna coupling
+    while abs(path101(i2,i1)) < 0.01 && i2 < Nrng-1    % threshold 0.06
         i2 = i2 + 1;
     end
     estimated_range(i1) = rng(i2);
@@ -268,10 +270,11 @@ hold
 plot(t_slow,median_range101,'w')  % readjust the threshold and coupling index based on this plot
 
 % 102
+close all;
 estimated_range=[];
 for i1=1:Nscans % Long time
-    i2 = 150; % Avoiding picking antenna coupling
-    while abs(path102(i2,i1)) < 0.08 && i2 < Nrng-2
+    i2 = 50; % Avoiding picking antenna coupling
+    while abs(path102(i2,i1)) < 0.02 && i2 < Nrng-2
         i2 = i2 + 1;
     end
     estimated_range(i1) = rng(i2);
@@ -283,10 +286,11 @@ hold
 plot(t_slow,median_range102,'w')
 
 % 104
+close all;
 estimated_range=[];
 for i1=1:Nscans % Long time
-    i2 = 100; % Avoiding picking antenna coupling
-    while abs(path104(i2,i1)) < 0.07 && i2 < Nrng-1
+    i2 = 30; % Avoiding picking antenna coupling
+    while abs(path104(i2,i1)) < 0.02 && i2 < Nrng-1
         i2 = i2 + 1;
     end
     estimated_range(i1) = rng(i2);
@@ -298,9 +302,10 @@ hold
 plot(t_slow,median_range104,'w')
 
 % 106
+close all;
 estimated_range=[];
 for i1=1:Nscans % Long time
-    i2 = 100; % Avoiding picking antenna coupling
+    i2 = 50; % Avoiding picking antenna coupling
     while abs(path106(i2,i1)) < 0.04 && i2 < Nrng-1
         i2 = i2 + 1;
     end

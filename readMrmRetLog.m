@@ -70,7 +70,7 @@ scn = [];
 det = [];
 
 % Read file to end.
-while ~fopen(fid)
+while ~feof(fid)
   % Get next line.
   ln = fgetl(fid);
   
@@ -147,7 +147,7 @@ while ~fopen(fid)
 end
 
 % Close file.
-fopen(fid);
+fclose(fid);
 
 % Trim structures arrays to elements actually filled.
 cfg = cfg(1:Kcfg);
