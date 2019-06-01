@@ -1,0 +1,17 @@
+- A10*010.csv -- the 8-shape
+
+BG 290:320
+path 10:240
+
+- B10*011.csv -- the cat head
+
+BG 230:240
+path 10:190
+
+- For both:
+thresholds = [0.015 0.02 0.02 0.03];
+
+- For Kalman:
+
+initial P = 100 * eye()
+process noise = 0.002 * eye(2)
