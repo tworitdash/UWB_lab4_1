@@ -180,7 +180,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 101 before background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('b_bg_S_01', '-depsc');
+%print('b_bg_S_01', '-depsc');
 %legend({'|S_{11}|^2 TE', '|S_{11}|^2 TM', '|S_{12}|^2 TE', '|S_{12}|^2 TM'},...
     %'Location','south', 'FontSize', 12, 'FontWeight', 'bold');
 
@@ -190,21 +190,21 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 102 before background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('b_bg_S_02', '-depsc');
+%print('b_bg_S_02', '-depsc');
 
 figure;imagesc(abs(data103_algnd)); colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 103 before background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('b_bg_S_03', '-depsc');
+%print('b_bg_S_03', '-depsc');
 
 figure;imagesc(abs(data104_algnd)); colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 104 before background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('b_bg_S_04', '-depsc');
+%print('b_bg_S_04', '-depsc');
 
 %% Background removal
 BGidx = 310:350;
@@ -226,21 +226,21 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 101 after background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_01', '-depsc');
+%print('bg_S_01', '-depsc');
 
 figure;imagesc(abs(data102_algnd_bg));colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 102 after background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_02', '-depsc');
+%print('bg_S_02', '-depsc');
 
 figure;imagesc(abs(data103_algnd_bg));colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 103 after background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_03', '-depsc');
+%print('bg_S_03', '-depsc');
 
 
 figure;imagesc(abs(data104_algnd_bg));colorbar;
@@ -249,7 +249,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 104 after background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_04', '-depsc');
+%print('bg_S_04', '-depsc');
 
 Motionidx = 25:280;
 path101 = data101_algnd_bg(:,Motionidx);
@@ -269,14 +269,14 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot - Slowtime of interest (Target in motion) radar 101'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_01_1', '-depsc');
+%print('bg_S_01_1', '-depsc');
 
 figure;imagesc(abs(path102)); colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot - Slowtime of interest (Target in motion) radar 102'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_02_1', '-depsc');
+%print('bg_S_02_1', '-depsc');
 
 figure;imagesc(abs(path103)); colorbar;
 
@@ -284,7 +284,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot - Slowtime of interest (Target in motion) radar 103'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_03_1', '-depsc');
+%print('bg_S_03_1', '-depsc');
 
 figure;imagesc(abs(path104)); colorbar;
 
@@ -292,7 +292,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot - Slowtime of interest (Target in motion) radar 104'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_04_1', '-depsc');
+%print('bg_S_04_1', '-depsc');
 
 
 %% Bandpass filter
@@ -325,7 +325,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('Motion_101_S_S', '-depsc');
+%print('Motion_101_S_S', '-depsc');
 
 median_range101 = medfilt1(estimated_range,6);%+rngOffset101;
 figure;imagesc(t_slow,rng,abs(path101));
@@ -336,7 +336,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time with the range slowtime plot'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('RD_101_S_S', '-depsc');
+%print('RD_101_S_S', '-depsc');
 %plot(t_slow,estimated_range,'y')
 
 
@@ -354,7 +354,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('Motion_102_S_S', '-depsc');
+%print('Motion_102_S_S', '-depsc');
 
 median_range102 = medfilt1(estimated_range,6);%+rngOffset102;
 figure;imagesc(t_slow,rng,abs(path102));
@@ -365,7 +365,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time with the range slowtime plot'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('RD_102_S_S', '-depsc');
+%print('RD_102_S_S', '-depsc');
 
 % 103
 %close all;
@@ -381,7 +381,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('Motion_103_S_S', '-depsc');
+%print('Motion_103_S_S', '-depsc');
 
 median_range103 = medfilt1(estimated_range,6);%+rngOffset103; % !!!!! test median filter 6 instead of 3
 figure;imagesc(t_slow,rng,abs(path103));
@@ -392,7 +392,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time with the range slowtime plot'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('RD_103_S_S', '-depsc');  % readjust the threshold and coupling index based on this plot
+%print('RD_103_S_S', '-depsc');  % readjust the threshold and coupling index based on this plot
 
 
 % 104
@@ -408,7 +408,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('Motion_104_S_S', '-depsc');
+%print('Motion_104_S_S', '-depsc');
 
 median_range104 = medfilt1(estimated_range,6);%+rngOffset104;
 figure;imagesc(t_slow,rng,abs(path104));
@@ -419,7 +419,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time with the range slowtime plot'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('RD_104_S_S', '-depsc');
+%print('RD_104_S_S', '-depsc');
 
 %% CFAR detection:
 
@@ -712,3 +712,8 @@ text(MarkPos(9,1),MarkPos(9,2),'I')
 
 set(gca,'PlotBoxAspectRatio',[1 1 1])
 title('S trajectory with Method 1 detection');xlabel('X (m)');ylabel('Y (m)')
+
+
+%% Kalman filtering
+
+%delt = 

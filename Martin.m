@@ -127,25 +127,25 @@ rngOffset104 = rngSph104Real - rngSph104; % range offset for unit 104
 %% Loading Data for tracking
 
 % Load data from unit 101
-[config,control,scans] = readMrmRetLog('B101009.csv');
+[config,control,scans] = readMrmRetLog('B101011.csv');
 Nscans101 = length(scans);
 tstmp101 = [scans.T];
 data101 = [scans.scn];
 data101 = reshape(data101,[],Nscans101);
 % Load data from unit 102
-[config,control,scans] = readMrmRetLog('B102009.csv');
+[config,control,scans] = readMrmRetLog('B102011.csv');
 Nscans102 = length(scans);
 tstmp102 = [scans.T];
 data102 = [scans.scn];
 data102 = reshape(data102,[],Nscans102);
 % Load data from unit 103
-[config,control,scans] = readMrmRetLog('B103009.csv');
+[config,control,scans] = readMrmRetLog('B103011.csv');
 Nscans103 = length(scans);
 tstmp103 = [scans.T];
 data103 = [scans.scn];
 data103 = reshape(data103,[],Nscans103);
 % Load data from unit 104
-[config,control,scans] = readMrmRetLog('B104009.csv');
+[config,control,scans] = readMrmRetLog('B104011.csv');
 Nscans104 = length(scans);
 tstmp104 = [scans.T];
 data104 = [scans.scn];
@@ -172,7 +172,7 @@ data102_algnd = data102(:,t102start_i:t102stop_i);
 data103_algnd = data103(:,t103start_i:t103stop_i);
 data104_algnd = data104(:,t104start_i:t104stop_i);
 
-[Nsamp,Nscans] = size(data101_algnd); 
+[Nsamp,Nscans] = size(data101_algnd);
 
 figure;imagesc(abs(data101_algnd)); colorbar;
 
@@ -180,7 +180,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 101 before background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('b_bg_S_01', '-depsc');
+%%print('b_bg_S_01_S', '-depsc');
 %legend({'|S_{11}|^2 TE', '|S_{11}|^2 TM', '|S_{12}|^2 TE', '|S_{12}|^2 TM'},...
     %'Location','south', 'FontSize', 12, 'FontWeight', 'bold');
 
@@ -190,24 +190,25 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 102 before background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('b_bg_S_02', '-depsc');
+%%print('b_bg_S_02_S', '-depsc');
 
 figure;imagesc(abs(data103_algnd)); colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 103 before background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('b_bg_S_03', '-depsc');
+%%print('b_bg_S_03_S', '-depsc');
 
 figure;imagesc(abs(data104_algnd)); colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 104 before background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('b_bg_S_04', '-depsc');
+%%print('b_bg_S_04_S', '-depsc');
+
 
 %% Background removal
-BGidx = 310:350;
+BGidx = 195:250;
 BG101 = mean(data101_algnd(:,BGidx),2); % select the slow time indexes containing the background data (here 170:230)
 BG102 = mean(data102_algnd(:,BGidx),2);
 BG103 = mean(data103_algnd(:,BGidx),2);   
@@ -226,21 +227,21 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 101 after background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_01', '-depsc');
+%%print('bg_S_01_S', '-depsc');
 
 figure;imagesc(abs(data102_algnd_bg));colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 102 after background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_02', '-depsc');
+%%print('bg_S_02_S', '-depsc');
 
 figure;imagesc(abs(data103_algnd_bg));colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 103 after background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_03', '-depsc');
+%%print('bg_S_03_S', '-depsc');
 
 
 figure;imagesc(abs(data104_algnd_bg));colorbar;
@@ -249,9 +250,9 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot for radar 104 after background subtraction'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_04', '-depsc');
+%%print('bg_S_04_S', '-depsc');
 
-Motionidx = 25:280;
+Motionidx = 12:190;
 path101 = data101_algnd_bg(:,Motionidx);
 path102 = data102_algnd_bg(:,Motionidx);
 path103 = data103_algnd_bg(:,Motionidx); % select the slow time indexes containing the trajectory data (here 15:115)
@@ -269,14 +270,14 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot - Slowtime of interest (Target in motion) radar 101'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_01_1', '-depsc');
+%print('bg_S_01_1_S', '-depsc');
 
 figure;imagesc(abs(path102)); colorbar;
 xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot - Slowtime of interest (Target in motion) radar 102'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_02_1', '-depsc');
+%print('bg_S_02_1_S', '-depsc');
 
 figure;imagesc(abs(path103)); colorbar;
 
@@ -284,7 +285,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot - Slowtime of interest (Target in motion) radar 103'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_03_1', '-depsc');
+%print('bg_S_03_1_S', '-depsc');
 
 figure;imagesc(abs(path104)); colorbar;
 
@@ -292,7 +293,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Fast time(nS)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Slow time fast time plot - Slowtime of interest (Target in motion) radar 104'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('bg_S_04_1', '-depsc');
+%print('bg_S_04_1_S', '-depsc');
 
 
 %% Bandpass filter
@@ -312,10 +313,9 @@ path105 = filter(w,1,path105BPF,[],2);
 t_slow = 0:.5:.5*(Nscans-1);
 
 % 101
-%close all;
 for i1=1:Nscans % Long time
-    i2 = 1; % Avoiding picking antenna coupling
-    while abs(path101(i2,i1)) < 0.02 && i2 < Nrng-1
+    i2 = 20; % Avoiding picking antenna coupling
+    while abs(path101(i2,i1)) < 0.015 && i2 < Nrng-1
         i2 = i2 + 1;
     end
     estimated_range(i1) = rng(i2);
@@ -325,7 +325,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('Motion_101_S_S', '-depsc');
+%print('Motion_101_S', '-depsc');
 
 median_range101 = medfilt1(estimated_range,6);%+rngOffset101;
 figure;imagesc(t_slow,rng,abs(path101));
@@ -336,15 +336,15 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time with the range slowtime plot'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('RD_101_S_S', '-depsc');
+%print('RD_101_S', '-depsc');
+
 %plot(t_slow,estimated_range,'y')
 
 
 % 102
-%close all;
 for i1=1:Nscans % Long time
-    i2 = 10; % Avoiding picking antenna coupling
-    while abs(path102(i2,i1)) < 0.032 && i2 < Nrng-1
+    i2 = 20; % Avoiding picking antenna coupling
+    while abs(path102(i2,i1)) < 0.02 && i2 < Nrng-1
         i2 = i2 + 1;
     end
     estimated_range(i1) = rng(i2);
@@ -354,7 +354,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('Motion_102_S_S', '-depsc');
+%print('Motion_102_S', '-depsc');
 
 median_range102 = medfilt1(estimated_range,6);%+rngOffset102;
 figure;imagesc(t_slow,rng,abs(path102));
@@ -365,13 +365,12 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time with the range slowtime plot'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('RD_102_S_S', '-depsc');
+%print('RD_102_S', '-depsc');
 
 % 103
-%close all;
 for i1=1:Nscans % Long time
-    i2 = 10; % Avoiding picking antenna coupling
-    while abs(path103(i2,i1)) < 0.028 && i2 < Nrng-1    % threshold 0.125
+    i2 = 60; % Avoiding picking antenna coupling
+    while abs(path103(i2,i1)) < 0.02 && i2 < Nrng-1    % threshold 0.125
         i2 = i2 + 1;
     end
     estimated_range(i1) = rng(i2);
@@ -381,7 +380,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('Motion_103_S_S', '-depsc');
+%print('Motion_103_S', '-depsc');
 
 median_range103 = medfilt1(estimated_range,6);%+rngOffset103; % !!!!! test median filter 6 instead of 3
 figure;imagesc(t_slow,rng,abs(path103));
@@ -392,13 +391,12 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time with the range slowtime plot'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('RD_103_S_S', '-depsc');  % readjust the threshold and coupling index based on this plot
-
+%print('RD_103_S', '-depsc');  % readjust the threshold and coupling index based on this plot
 
 % 104
 for i1=1:Nscans % Long time
     i2 = 80; % Avoiding picking antenna coupling
-    while abs(path104(i2,i1)) < 0.04 && i2 < Nrng-1
+    while abs(path104(i2,i1)) < 0.03 && i2 < Nrng-1
         i2 = i2 + 1;
     end
     estimated_range(i1) = rng(i2);
@@ -408,7 +406,7 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('Motion_104_S_S', '-depsc');
+%print('Motion_104_S', '-depsc');
 
 median_range104 = medfilt1(estimated_range,6);%+rngOffset104;
 figure;imagesc(t_slow,rng,abs(path104));
@@ -419,13 +417,12 @@ xlabel('Slow time(S)', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('Range(m)', 'FontSize', 12, 'FontWeight', 'bold');
 title(['Target motion in slow time with the range slowtime plot'], ...
     'FontSize', 12, 'FontWeight', 'bold');
-print('RD_104_S_S', '-depsc');
+%print('RD_104_S', '-depsc');
 
 %% CFAR detection:
-
 [Nrng,Nscans] = size(path103);
 t_slow = 0:.5:.5*(Nscans-1);
-Nsamp_to_measure = size(path101(rng < 3.1), 2);
+Nsamp_to_measure = size(path103(rng < 4), 2);
 
 % data from radar 1
 for k = 1:Nscans
@@ -449,7 +446,6 @@ hold on;
 plot(rng(1:Nsamp_to_measure), th(1:Nsamp_to_measure, 50), 'LineWidth', 2)
 
 % for data from radar 2
-Nsamp_to_measure = size(path102(rng < 3), 2);
 for k = 1:Nscans
 
     [Ind(k), th(1:Nsamp_to_measure, k)] = CFAR(path102(1:Nsamp_to_measure, k), 21, 0.08, 16);
@@ -471,7 +467,7 @@ hold on;
 plot(rng(1:Nsamp_to_measure), th(1:Nsamp_to_measure, 50), 'LineWidth', 2)
 
 % data from radar 3
-Nsamp_to_measure = size(path103(rng < 3.5), 2);
+Nsamp_to_measure = size(path103(rng < 3.2), 2);
 
 for k = 1:Nscans
 
@@ -495,33 +491,35 @@ plot(rng(1:Nsamp_to_measure), th(1:Nsamp_to_measure, 50), 'LineWidth', 2)
 
 % data from radar 4
 
-
-Nsamp_to_measure = size(path104(rng < 3.5), 2);
+%Nsamp_to_measure = size(path104(rng > 0.5 & rng < 3.2), 2);
+Nsamp_to_measure = find(rng > 0.5 & rng < 3.2);
+Ind_i = find(rng >= 0.7);
 
 for k = 1:Nscans
 
-    [Ind(k), th(1:Nsamp_to_measure, k)] = CFAR(path104(1:Nsamp_to_measure, k), 21, 0.1, 16);
-    est_rng(k) = rng(Ind(k));
+    [Ind(k), th(Nsamp_to_measure, k)] = CFAR(path104(Nsamp_to_measure, k), 21, 0.2, 16);
+    est_rng(k) = rng(56 + Ind(k));
 end
 
 figure;imagesc(t_slow,rng,abs(path104));title('104')
 hold on;
 med104 = medfilt1(est_rng, 6);
 plot(t_slow, med104, 'w')
-figure;
-plot(rng(1:Nsamp_to_measure), path104(1:Nsamp_to_measure, 7), 'LineWidth', 2)
-hold on;
-plot(rng(1:Nsamp_to_measure), th(1:Nsamp_to_measure, 7), 'LineWidth', 2)
-
-figure;
-plot(rng(1:Nsamp_to_measure), path104(1:Nsamp_to_measure, 50), 'LineWidth', 2)
-hold on;
-plot(rng(1:Nsamp_to_measure), th(1:Nsamp_to_measure, 50), 'LineWidth', 2)
+% figure;
+% plot(rng(1:Nsamp_to_measure), path104(1:Nsamp_to_measure, 7), 'LineWidth', 2)
+% hold on;
+% plot(rng(1:Nsamp_to_measure), th(1:Nsamp_to_measure, 7), 'LineWidth', 2)
+% 
+% figure;
+% plot(rng(1:Nsamp_to_measure), path104(1:Nsamp_to_measure, 50), 'LineWidth', 2)
+% hold on;
+% plot(rng(1:Nsamp_to_measure), th(1:Nsamp_to_measure, 50), 'LineWidth', 2)
 
 
 % plot(rng, path101(:, 4), 'LineWidth', 2);
 % hold on;
 % plot(rng, 0.1 + th(:, 4), 'LineWidth', 2);
+
 
 
 %% Target localisation
@@ -575,8 +573,8 @@ end
 figure;plot(x34(:,2),y34(:,2));title('103 - 104')
 
 %%
-x = nanmean([x12(:,2), x14(:,2)],2);
-y = nanmean([y12(:,1), y14(:,1)],2);
+x = nanmean([x34(:,1), x14(:,2)],2);
+y = nanmean([y34(:,1), y14(:,2)],2);
 
 figure;plot(smooth(x,3),smooth(y,3),'x-','linewidth',2);axis([-3 3 -3 3]);grid
 axis square
@@ -637,8 +635,6 @@ plot(t_slow,estimated_range,'y')
 %% Least Square method:
 Theta_x = zeros(1, Nscans);
 Theta_y = zeros(1, Nscans);
-U_x = zeros(1, Nscans);
-U_y = zeros(1, Nscans);
 
     x1 = P101(1);
     x2 = P102(1);
@@ -649,8 +645,6 @@ U_y = zeros(1, Nscans);
     y2 = P102(2);
     y3 = P103(2);
     y4 = P104(2);
-    
-    r01 = sqrt(x1.^2 + y
 
 for i = 1:Nscans
     
@@ -658,7 +652,7 @@ for i = 1:Nscans
 %     r2 = median_range102(i);
 %     r3 = median_range103(i);
 %     r4 = median_range104(i);
-    
+%     
     r1 = med101(i);
     r2 = med102(i);
     r3 = med103(i);
@@ -674,26 +668,27 @@ for i = 1:Nscans
     Theta = inv(H'*H) * H' * X;
     Theta_x(i) = Theta(1);
     Theta_y(i) = Theta(2);
-    r_est(i) = 
     
-    U_x(i) = abs(Theta_x(i) - x1(i)).^2;
-    U_y(i) = abs(Theta_y(i) - x1(i)).^2;
+    
+    
+%     U = inv(H)*X;
+%     U_x = U(1);
+%     U_y = U(2);
+%     
     
     
 end
 
-figure;plot(smooth(Theta_x,3),smooth(Theta_y,3),'x-','linewidth',2, 'color',...
-    [0.6350, 0.0780, 0.1840]);axis([-3 3 -3 3]);grid
+figure;plot(smooth(Theta_x,3),smooth(Theta_y,3),'x-','linewidth',2, ...
+    'color', [0.6350, 0.0780, 0.1840]);axis([-3 3 -3 3]);grid
 axis square
 hold on
+% plot(smooth(U_x,3),smooth(U_y,3),'x-','linewidth',2);axis([-3 3 -3 3]);grid
 
-plot(smooth(U_x,3),smooth(U_y,3),'x-','linewidth',2, 'color', ...
-    [0.25, 0.25, 0.25]);axis([-3 3 -3 3]);grid
-
-plot(P101(1),P101(2),'ok','markerfacecolor','k');text(P101(1)+.1,P101(2),'101')
-plot(P102(1),P102(2),'ok','markerfacecolor','k');text(P102(1)+.1,P102(2),'102')
-plot(P103(1),P103(2),'ok','markerfacecolor','k');text(P103(1)+.1,P103(2),'103')
-plot(P104(1),P104(2),'ok','markerfacecolor','k');text(P104(1)+.1,P104(2),'104')
+plot(P101(1),P101(2),'ok','markerfacecolor','k');text(P101(1)+.1,P101(2),'101 (-1.5, -1.6)')
+plot(P102(1),P102(2),'ok','markerfacecolor','k');text(P102(1)+.1,P102(2),'102 (-1.4, 1.5)')
+plot(P103(1),P103(2),'ok','markerfacecolor','k');text(P103(1)+.1,P103(2),'103 (1.7, 1.9)')
+plot(P104(1),P104(2),'ok','markerfacecolor','k');text(P104(1)+.1,P104(2),'104 (2.3, -1.3)')
     
 text(MarkPos(1,1),MarkPos(1,2),'A')
 text(MarkPos(2,1),MarkPos(2,2),'B')
@@ -706,4 +701,4 @@ text(MarkPos(8,1),MarkPos(8,2),'H')
 text(MarkPos(9,1),MarkPos(9,2),'I')
 
 set(gca,'PlotBoxAspectRatio',[1 1 1])
-title('S trajectory with CA CFAR detection');xlabel('X (m)');ylabel('Y (m)')
+title('EH trajectory with CA CFAR detection');xlabel('X (m)');ylabel('Y (m)')
